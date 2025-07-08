@@ -2,8 +2,7 @@
 
 ## Assignment Overview
 
-**Objective:**
-Develop a full-stack application with a Node.js backend and a modern frontend interface. The backend provides a Canvas-based API for drawing and exporting, while the frontend allows users to interactively build and export their designs as high-quality PDFs.
+A full-stack application with a Node.js backend and a modern frontend interface. The backend provides a Canvas-based API for drawing and exporting, while the frontend allows users to interactively build and export their designs as high-quality PDFs.
 
 ---
 
@@ -81,19 +80,7 @@ Develop a full-stack application with a Node.js backend and a modern frontend in
 - **PDF Export:** `pdfkit` or similar
 - **PDF Optimization:** Basic compression implemented
 
----
 
-## Deliverables
-- Full project code (GitHub)
-- Hosted demo (Vercel or Surge + backend hosting)
-- Well-documented README (this file)
-
----
-
-## License
-MIT
-
----
 
 ## Author
-Your Name
+Vikas Kasera
