@@ -11,8 +11,8 @@ class CanvasBuilder {
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             return 'http://localhost:5000';
         }
-        // For production, update this to your backend URL
-        return 'https://your-backend-url.vercel.app';
+        // For production, use Render backend URL
+        return 'https://canvas-builder-cown.onrender.com';
     }
 
     generateCanvasId() {
