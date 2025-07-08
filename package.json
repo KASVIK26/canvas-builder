@@ -1,0 +1,18 @@
+{
+  "name": "canvas-builder",
+  "version": "1.0.0",
+  "description": "Full-stack Canvas Builder with PDF Export",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "cd backend && npm run dev",
+    "build": "echo 'Build complete'",
+    "install-deps": "cd backend && npm install"
+  },
+  "keywords": ["canvas", "pdf", "export", "drawing", "api"],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

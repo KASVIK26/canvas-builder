@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Builder - Create & Export to PDF</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-paint-brush"></i> Canvas Builder</h1>
+                <p>Create stunning designs and export them to PDF</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <div class="panel-section">
+                    <h3><i class="fas fa-cog"></i> Canvas Settings</h3>
+                    <div class="form-group">
+                        <label>Canvas Dimensions</label>
+                        <div class="field-description">Set the width and height of your canvas in pixels</div>
+                        <div class="dimension-inputs">
+                            <div class="input-group">
+                                <label>Width (px)</label>
+                                <input type="number" id="canvasWidth" placeholder="800" value="800" min="100" max="5000">
+                            </div>
+                            <span>×</span>
+                            <div class="input-group">
+                                <label>Height (px)</label>
+                                <input type="number" id="canvasHeight" placeholder="600" value="600" min="100" max="5000">
+                            </div>
+                        </div>
+                        <button id="initCanvas" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Initialize Canvas
+                        </button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3><i class="fas fa-shapes"></i> Add Elements</h3>
+                    
+                    <!-- Rectangle Controls -->
+                    <div class="element-controls">
+                        <h4>Rectangle</h4>
+                        <div class="field-description">Position and size settings for rectangle</div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>X Position</label>
+                                <input type="number" id="rectX" placeholder="50" value="50">
+                            </div>
+                            <div class="input-group">
+                                <label>Y Position</label>
+                                <input type="number" id="rectY" placeholder="50" value="50">
+                            </div>
+                            <div class="input-group">
+                                <label>Width</label>
+                                <input type="number" id="rectWidth" placeholder="100" value="100">
+                            </div>
+                            <div class="input-group">
+                                <label>Height</label>
+                                <input type="number" id="rectHeight" placeholder="80" value="80">
+                            </div>
+                        </div>
+                        <div class="field-description">Color and border settings</div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Fill Color</label>
+                                <input type="color" id="rectFill" value="#3498db">
+                            </div>
+                            <div class="input-group">
+                                <label>Border Color</label>
+                                <input type="color" id="rectStroke" value="#2c3e50">
+                            </div>
+                            <div class="input-group">
+                                <label>Border Width</label>
+                                <input type="number" id="rectStrokeWidth" placeholder="2" value="2" min="0" max="10">
+                            </div>
+                        </div>
+                        <button id="addRectangle" class="btn btn-secondary">
+                            <i class="fas fa-square"></i> Add Rectangle
+                        </button>
+                    </div>
+
+                    <!-- Circle Controls -->
+                    <div class="element-controls">
+                        <h4>Circle</h4>
+                        <div class="field-description">Position and size settings for circle</div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Center X</label>
+                                <input type="number" id="circleX" placeholder="200" value="200">
+                            </div>
+                            <div class="input-group">
+                                <label>Center Y</label>
+                                <input type="number" id="circleY" placeholder="200" value="200">
+                            </div>
+                            <div class="input-group">
+                                <label>Radius</label>
+                                <input type="number" id="circleRadius" placeholder="50" value="50">
+                            </div>
+                        </div>
+                        <div class="field-description">Color and border settings</div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Fill Color</label>
+                                <input type="color" id="circleFill" value="#e74c3c">
+                            </div>
+                            <div class="input-group">
+                                <label>Border Color</label>
+                                <input type="color" id="circleStroke" value="#c0392b">
+                            </div>
+                            <div class="input-group">
+                                <label>Border Width</label>
+                                <input type="number" id="circleStrokeWidth" placeholder="2" value="2" min="0" max="10">
+                            </div>
+                        </div>
+                        <button id="addCircle" class="btn btn-secondary">
+                            <i class="fas fa-circle"></i> Add Circle
+                        </button>
+                    </div>
+
+                    <!-- Text Controls -->
+                    <div class="element-controls">
+                        <h4>Text</h4>
+                        <div class="field-description">Text content and position</div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Text Content</label>
+                                <input type="text" id="textContent" placeholder="Hello World" value="Hello World">
+                            </div>
+                            <div class="input-group">
+                                <label>X Position</label>
+                                <input type="number" id="textX" placeholder="300" value="300">
+                            </div>
+                            <div class="input-group">
+                                <label>Y Position</label>
+                                <input type="number" id="textY" placeholder="100" value="100">
+                            </div>
+                        </div>
+                        <div class="field-description">Font size and style</div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Font Size (px)</label>
+                                <input type="number" id="textSize" placeholder="24" value="24" min="8" max="100">
+                            </div>
+                            <div class="input-group">
+                                <label>Font Family</label>
+                                <select id="textFont">
+                                    <option value="Arial">Arial</option>
+                                    <option value="Times New Roman">Times New Roman</option>
+                                    <option value="Helvetica">Helvetica</option>
+                                    <option value="Courier New">Courier New</option>
+                                    <option value="Georgia">Georgia</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field-description">Text color and outline</div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Text Color</label>
+                                <input type="color" id="textFill" value="#2c3e50">
+                            </div>
+                            <div class="input-group">
+                                <label>Outline Color</label>
+                                <input type="color" id="textStroke" value="#34495e">
+                            </div>
+                            <div class="input-group">
+                                <label>Outline Width</label>
+                                <input type="number" id="textStrokeWidth" placeholder="0" value="0" min="0" max="5">
+                            </div>
+                        </div>
+                        <button id="addText" class="btn btn-secondary">
+                            <i class="fas fa-font"></i> Add Text
+                        </button>
+                    </div>
+
+                    <!-- Image Controls -->
+                    <div class="element-controls">
+                        <h4>Image</h4>
+                        <div class="field-description">Choose image from file or enter URL</div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Upload Image File</label>
+                                <input type="file" id="imageFile" accept="image/*">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Or Enter Image URL</label>
+                                <input type="text" id="imageUrl" placeholder="https://example.com/image.jpg">
+                            </div>
+                        </div>
+                        <div class="field-description">Position and size settings</div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>X Position</label>
+                                <input type="number" id="imageX" placeholder="400" value="400">
+                            </div>
+                            <div class="input-group">
+                                <label>Y Position</label>
+                                <input type="number" id="imageY" placeholder="300" value="300">
+                            </div>
+                            <div class="input-group">
+                                <label>Width (optional)</label>
+                                <input type="number" id="imageWidth" placeholder="Auto">
+                            </div>
+                            <div class="input-group">
+                                <label>Height (optional)</label>
+                                <input type="number" id="imageHeight" placeholder="Auto">
+                            </div>
+                        </div>
+                        <button id="addImage" class="btn btn-secondary">
+                            <i class="fas fa-image"></i> Add Image
+                        </button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3><i class="fas fa-download"></i> Export Options</h3>
+                    <div class="form-group">
+                        <div class="field-description">Enter filename for your PDF export</div>
+                        <div class="input-group">
+                            <label>PDF Filename</label>
+                            <input type="text" id="exportFilename" placeholder="my-canvas" value="my-canvas">
+                        </div>
+                        <button id="exportPdf" class="btn btn-success">
+                            <i class="fas fa-file-pdf"></i> Export to PDF
+                        </button>
+                        <button id="clearCanvas" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Clear Canvas
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canvas Preview -->
+            <div class="canvas-container">
+                <div class="canvas-header">
+                    <h3><i class="fas fa-eye"></i> Canvas Preview</h3>
+                    <div class="canvas-info">
+                        <span id="canvasInfo">Initialize canvas to begin</span>
+                    </div>
+                </div>
+                <div class="canvas-wrapper">
+                    <div id="canvasPlaceholder" class="canvas-placeholder">
+                        <div class="placeholder-content">
+                            <i class="fas fa-paint-brush"></i>
+                            <p>Click "Initialize Canvas" to start creating</p>
+                        </div>
+                    </div>
+                    <img id="canvasPreview" class="canvas-preview" style="display: none;">
+                </div>
+                <div class="canvas-actions">
+                    <button id="refreshPreview" class="btn btn-outline">
+                        <i class="fas fa-refresh"></i> Refresh Preview
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Status Messages -->
+        <div id="statusMessages" class="status-messages"></div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Processing...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
